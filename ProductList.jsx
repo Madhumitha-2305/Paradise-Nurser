@@ -1,176 +1,140 @@
-import React, { useState } from "react";
-import { useDispatch } from "react-redux";
-import { addItem } from "./CartSlice";
+import React from "react";
 
-const products = [
+const plants = [
   {
     id: 1,
     name: "Snake Plant",
     category: "Indoor Plants",
     price: 25,
-    image:
-      "https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?auto=format&fit=crop&w=600&q=80",
+    image: "https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?auto=format&fit=crop&w=500&q=80",
+    description: "A beautiful and low-maintenance indoor plant."
   },
   {
     id: 2,
     name: "Peace Lily",
     category: "Indoor Plants",
     price: 30,
-    image:
-      "https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?auto=format&fit=crop&w=600&q=80",
+    image: "https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?auto=format&fit=crop&w=500&q=80",
+    description: "An elegant plant that adds beauty to any room."
   },
   {
     id: 3,
     name: "Aloe Vera",
-    category: "Succulents",
+    category: "Medicinal Plants",
     price: 20,
-    image:
-      "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=600&q=80",
+    image: "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=500&q=80",
+    description: "A useful succulent known for its soothing properties."
   },
   {
     id: 4,
-    name: "Jade Plant",
-    category: "Succulents",
-    price: 22,
-    image:
-      "https://images.unsplash.com/photo-1459156212016-c812468e2115?auto=format&fit=crop&w=600&q=80",
+    name: "Money Plant",
+    category: "Indoor Plants",
+    price: 18,
+    image: "https://images.unsplash.com/photo-1614594575662-45f6e5b9d4f5?auto=format&fit=crop&w=500&q=80",
+    description: "A popular indoor plant that is easy to grow."
   },
   {
     id: 5,
-    name: "Rose Plant",
-    category: "Flowering Plants",
-    price: 28,
-    image:
-      "https://images.unsplash.com/photo-1496062031456-07b8f162a322?auto=format&fit=crop&w=600&q=80",
+    name: "Spider Plant",
+    category: "Indoor Plants",
+    price: 22,
+    image: "https://images.unsplash.com/photo-1572688484438-313a6e50c333?auto=format&fit=crop&w=500&q=80",
+    description: "A fast-growing plant perfect for indoor spaces."
   },
   {
     id: 6,
-    name: "Lavender",
-    category: "Flowering Plants",
-    price: 26,
-    image:
-      "https://images.unsplash.com/photo-1499002238440-d264edd596ec?auto=format&fit=crop&w=600&q=80",
+    name: "Jade Plant",
+    category: "Succulents",
+    price: 28,
+    image: "https://images.unsplash.com/photo-1567225557594-88d73e55f2cb?auto=format&fit=crop&w=500&q=80",
+    description: "A beautiful succulent with thick green leaves."
   },
   {
     id: 7,
-    name: "Money Plant",
-    category: "Air Purifying Plants",
-    price: 18,
-    image:
-      "https://images.unsplash.com/photo-1614594975525-e45190c55d0b?auto=format&fit=crop&w=600&q=80",
+    name: "Cactus",
+    category: "Succulents",
+    price: 15,
+    image: "https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=500&q=80",
+    description: "A hardy plant that requires very little maintenance."
   },
   {
     id: 8,
-    name: "Spider Plant",
-    category: "Air Purifying Plants",
-    price: 24,
-    image:
-      "https://images.unsplash.com/photo-1572688484438-313a6e50c333?auto=format&fit=crop&w=600&q=80",
-  },
+    name: "Areca Palm",
+    category: "Outdoor Plants",
+    price: 35,
+    image: "https://images.unsplash.com/photo-1525490829609-d166ddb58678?auto=format&fit=crop&w=500&q=80",
+    description: "A tropical palm that brings a fresh natural look."
+  }
 ];
 
-const ProductList = () => {
-  const dispatch = useDispatch();
+function ProductList({ onAddToCart }) {
+  const addToCart = (plant) => {
+    if (onAddToCart) {
+      onAddToCart(plant);
+    } else {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-  const [cart, setCart] = useState({});
+      const existingItem = cart.find((item) => item.id === plant.id);
 
-  const handleAddToCart = (product) => {
-    dispatch(addItem(product));
+      if (existingItem) {
+        existingItem.quantity += 1;
+      } else {
+        cart.push({
+          ...plant,
+          quantity: 1
+        });
+      }
 
-    setCart((previousCart) => ({
-      ...previousCart,
-      [product.id]: (previousCart[product.id] || 0) + 1,
-    }));
+      localStorage.setItem("cart", JSON.stringify(cart));
+
+      alert(`${plant.name} added to cart!`);
+    }
   };
-
-  const handleIncrease = (product) => {
-    dispatch(addItem(product));
-
-    setCart((previousCart) => ({
-      ...previousCart,
-      [product.id]: (previousCart[product.id] || 0) + 1,
-    }));
-  };
-
-  const categories = [
-    ...new Set(products.map((product) => product.category)),
-  ];
 
   return (
-    <div className="product-list-page">
-      <header className="product-header">
-        <h1>Paradise Nursery 🌱</h1>
-        <p>Find the perfect plants for your home</p>
-      </header>
+    <div className="product-page">
+      <div className="product-header">
+        <h1>Paradise Nursery</h1>
+        <h2>Our Plants</h2>
+        <p>Choose from our collection of beautiful and healthy plants.</p>
+      </div>
 
-      <main className="products-container">
-        {categories.map((category) => (
-          <section key={category} className="product-category">
-            <h2>{category}</h2>
+      <div className="product-grid">
+        {plants.map((plant) => (
+          <div className="product-card" key={plant.id}>
+            <img
+              src={plant.image}
+              alt={plant.name}
+              className="product-image"
+            />
 
-            <div className="product-grid">
-              {products
-                .filter((product) => product.category === category)
-                .map((product) => (
-                  <div className="product-card" key={product.id}>
-                    <img
-                      src={product.image}
-                      alt={product.name}
-                      className="product-image"
-                    />
+            <div className="product-details">
+              <h3>{plant.name}</h3>
 
-                    <div className="product-info">
-                      <h3>{product.name}</h3>
+              <p className="product-category">
+                {plant.category}
+              </p>
 
-                      <p className="product-category-name">
-                        {product.category}
-                      </p>
+              <p className="product-description">
+                {plant.description}
+              </p>
 
-                      <p className="product-price">
-                        ${product.price.toFixed(2)}
-                      </p>
+              <p className="product-price">
+                ${plant.price}
+              </p>
 
-                      {cart[product.id] ? (
-                        <div className="quantity-controls">
-                          <button
-                            onClick={() =>
-                              setCart((previousCart) => ({
-                                ...previousCart,
-                                [product.id]: Math.max(
-                                  0,
-                                  previousCart[product.id] - 1
-                                ),
-                              }))
-                            }
-                          >
-                            -
-                          </button>
-
-                          <span>{cart[product.id]}</span>
-
-                          <button
-                            onClick={() => handleIncrease(product)}
-                          >
-                            +
-                          </button>
-                        </div>
-                      ) : (
-                        <button
-                          className="add-to-cart-btn"
-                          onClick={() => handleAddToCart(product)}
-                        >
-                          Add to Cart
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                ))}
+              <button
+                className="add-to-cart"
+                onClick={() => addToCart(plant)}
+              >
+                Add to Cart
+              </button>
             </div>
-          </section>
+          </div>
         ))}
-      </main>
+      </div>
     </div>
   );
-};
+}
 
 export default ProductList;

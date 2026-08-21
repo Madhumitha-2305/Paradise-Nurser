@@ -6,42 +6,35 @@ function AboutUs() {
       <h1>About Paradise Nursery</h1>
 
       <p>
-        Welcome to Paradise Nursery, your one-stop destination for beautiful
-        and healthy plants. We are passionate about bringing nature closer to
-        your home and making it easy for everyone to create a green and
-        peaceful environment.
+        Welcome to Paradise Nursery, your online destination for beautiful
+        and healthy plants.
+      </p>
+
+      <p>
+        We offer a wide variety of indoor and outdoor plants to help you
+        create a fresh, green, and peaceful environment at home or in your
+        office.
       </p>
 
       <h2>Our Mission</h2>
-
       <p>
-        Our mission is to provide high-quality plants at affordable prices
-        while helping customers choose the perfect plants for their homes,
-        offices, and gardens.
-      </p>
-
-      <h2>What We Offer</h2>
-
-      <p>
-        At Paradise Nursery, you can explore a wide variety of indoor and
-        outdoor plants. Each plant includes details such as its name,
-        description, image, and price so that you can easily choose the right
-        plant for your needs.
+        Our mission is to make it easy for everyone to bring nature into
+        their everyday lives by providing quality plants at affordable
+        prices.
       </p>
 
       <h2>Why Choose Us?</h2>
-
       <ul>
         <li>Wide variety of plants</li>
+        <li>Quality and healthy plants</li>
         <li>Affordable prices</li>
-        <li>Easy online shopping experience</li>
-        <li>High-quality and healthy plants</li>
-        <li>Customer-friendly service</li>
+        <li>User-friendly shopping experience</li>
+        <li>Customer-focused service</li>
       </ul>
 
       <p>
-        Thank you for choosing Paradise Nursery. We hope to make your shopping
-        experience simple, enjoyable, and green!
+        Thank you for choosing Paradise Nursery. We are happy to be a part
+        of your journey toward a greener and healthier space.
       </p>
     </div>
   );

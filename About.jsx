@@ -1,48 +1,50 @@
 import React from "react";
 
-const AboutUs = () => {
+function AboutUs() {
   return (
     <div className="about-us">
-      <section className="about-hero">
-        <h1>About Paradise Nursery 🌱</h1>
-        <p>
-          Welcome to Paradise Nursery, your one-stop destination for beautiful
-          and healthy plants.
-        </p>
-      </section>
+      <h1>About Paradise Nursery</h1>
 
-      <section className="about-content">
-        <h2>Who We Are</h2>
-        <p>
-          Paradise Nursery is a plant nursery dedicated to bringing nature
-          closer to your home. We offer a wide variety of indoor and outdoor
-          plants carefully selected to brighten your living spaces.
-        </p>
+      <p>
+        Welcome to Paradise Nursery, your one-stop destination for beautiful
+        and healthy plants. We are passionate about bringing nature closer to
+        your home and making it easy for everyone to create a green and
+        peaceful environment.
+      </p>
 
-        <h2>Our Mission</h2>
-        <p>
-          Our mission is to make it easy for everyone to enjoy the beauty and
-          benefits of plants. We believe that every home can become a greener,
-          healthier, and more peaceful place.
-        </p>
+      <h2>Our Mission</h2>
 
-        <h2>Why Choose Us?</h2>
-        <ul>
-          <li>🌿 Wide variety of healthy plants</li>
-          <li>🪴 Quality plants at affordable prices</li>
-          <li>🌱 Easy and convenient shopping experience</li>
-          <li>💚 Passionate about plants and nature</li>
-          <li>🌍 Promoting a greener lifestyle</li>
-        </ul>
+      <p>
+        Our mission is to provide high-quality plants at affordable prices
+        while helping customers choose the perfect plants for their homes,
+        offices, and gardens.
+      </p>
 
-        <h2>Our Vision</h2>
-        <p>
-          We aim to create a greener future by encouraging people to bring
-          plants into their homes and everyday lives.
-        </p>
-      </section>
+      <h2>What We Offer</h2>
+
+      <p>
+        At Paradise Nursery, you can explore a wide variety of indoor and
+        outdoor plants. Each plant includes details such as its name,
+        description, image, and price so that you can easily choose the right
+        plant for your needs.
+      </p>
+
+      <h2>Why Choose Us?</h2>
+
+      <ul>
+        <li>Wide variety of plants</li>
+        <li>Affordable prices</li>
+        <li>Easy online shopping experience</li>
+        <li>High-quality and healthy plants</li>
+        <li>Customer-friendly service</li>
+      </ul>
+
+      <p>
+        Thank you for choosing Paradise Nursery. We hope to make your shopping
+        experience simple, enjoyable, and green!
+      </p>
     </div>
   );
-};
+}
 
 export default AboutUs;

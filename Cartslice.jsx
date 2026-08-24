@@ -1,65 +1,33 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice } from '@reduxjs/toolkit';
 
-const initialState = {
-  items: [],
-};
-
-const CartSlice = createSlice({
-  name: "cart",
-  initialState,
-
+export const CartSlice = createSlice({
+  name: 'cart',
+  initialState: {
+    items: [], // each item: { name, image, cost, quantity }
+  },
   reducers: {
-    // Add an item to the cart
     addItem: (state, action) => {
-      const item = action.payload;
-
-      const existingItem = state.items.find(
-        (cartItem) => cartItem.id === item.id
-      );
-
+      const { name, image, cost } = action.payload;
+      const existingItem = state.items.find(item => item.name === name);
       if (existingItem) {
-        existingItem.quantity += 1;
+        existingItem.quantity++;
       } else {
-        state.items.push({
-          ...item,
-          quantity: 1,
-        });
+        state.items.push({ name, image, cost, quantity: 1 });
       }
     },
-
-    // Remove an item from the cart
     removeItem: (state, action) => {
-      state.items = state.items.filter(
-        (item) => item.id !== action.payload
-      );
+      state.items = state.items.filter(item => item.name !== action.payload);
     },
-
-    // Update the quantity of an item
     updateQuantity: (state, action) => {
-      const { id, quantity } = action.payload;
-
-      const item = state.items.find(
-        (cartItem) => cartItem.id === id
-      );
-
-      if (item) {
-        item.quantity = quantity;
-
-        // Remove item if quantity becomes zero or less
-        if (item.quantity <= 0) {
-          state.items = state.items.filter(
-            (cartItem) => cartItem.id !== id
-          );
-        }
+      const { name, quantity } = action.payload;
+      const itemToUpdate = state.items.find(item => item.name === name);
+      if (itemToUpdate) {
+        itemToUpdate.quantity = quantity;
       }
     },
   },
 });
 
-export const {
-  addItem,
-  removeItem,
-  updateQuantity,
-} = CartSlice.actions;
+export const { addItem, removeItem, updateQuantity } = CartSlice.actions;
 
 export default CartSlice.reducer;

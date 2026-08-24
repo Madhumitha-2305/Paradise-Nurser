@@ -1,38 +1,22 @@
-# Paradise Nursery 🌱
+# Paradise Nursery
 
-Paradise Nursery is a plant shopping website where users can browse a collection of indoor and outdoor plants and add their favorite plants to a shopping cart.
+**Project Name:** Paradise Nursery – Online Plant Shopping Application
 
-## 🌿 Features
+## Overview
+Paradise Nursery is a dynamic e-commerce web application built with React and Redux
+that allows users to browse a curated catalog of houseplants, view plant details
+(thumbnail, name, description, and price), add plants to a shopping cart, and manage
+cart items (increase/decrease quantity, remove items, view running totals).
 
-- Browse different types of plants
-- View plant details and prices
-- Add plants to the shopping cart
-- Increase or decrease item quantities
-- Remove plants from the cart
-- View the total price
-- Responsive and user-friendly interface
+## Features
+- Landing page with company branding and a "Get Started" call-to-action button.
+- About Us page describing the company.
+- Product listing page with plants grouped into multiple categories.
+- "Add to Cart" functionality with button state changes and live cart count in the navbar.
+- Full shopping cart page with per-item and overall totals, quantity controls, and item removal.
+- "Checkout" button (Coming Soon) and "Continue Shopping" navigation back to the product listing.
 
-## 🪴 Plant Categories
-
-The application includes plants such as:
-
-- Indoor Plants
-- Outdoor Plants
-- Succulents
-- Flowering Plants
-- Air-Purifying Plants
-
-## 🛠️ Technologies Used
-
-- HTML
-- CSS
-- JavaScript
-- React
-- Git & GitHub
-
-## 🚀 Getting Started
-
-### 1. Clone the repository
-
-```bash
-git clone https://github.com/Madhumitha-2305/Paradise-Nursery.git
+## Tech Stack
+- React (functional components + hooks)
+- Redux Toolkit (state management for the shopping cart)
+- CSS (custom styling, background imagery)

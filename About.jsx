@@ -1,40 +1,24 @@
-import React from "react";
+import React from 'react';
 
 function AboutUs() {
   return (
-    <div className="about-us">
+    <div style={{ padding: '40px', maxWidth: '800px', margin: '0 auto' }}>
       <h1>About Paradise Nursery</h1>
-
-      <p>
-        Welcome to Paradise Nursery, your online destination for beautiful
-        and healthy plants.
+      <p style={{ marginTop: '15px', lineHeight: '1.6' }}>
+        Paradise Nursery was founded with a simple mission: to bring the beauty and
+        benefits of houseplants into every home. We believe that a home filled with
+        greenery is a home filled with life, cleaner air, and a little more calm.
       </p>
-
-      <p>
-        We offer a wide variety of indoor and outdoor plants to help you
-        create a fresh, green, and peaceful environment at home or in your
-        office.
+      <p style={{ marginTop: '15px', lineHeight: '1.6' }}>
+        Our team of plant enthusiasts hand-picks every variety we offer, from
+        low-maintenance succulents perfect for beginners to lush, air-purifying
+        plants for the seasoned green thumb. Each plant is nurtured with care
+        before it makes its way to your doorstep.
       </p>
-
-      <h2>Our Mission</h2>
-      <p>
-        Our mission is to make it easy for everyone to bring nature into
-        their everyday lives by providing quality plants at affordable
-        prices.
-      </p>
-
-      <h2>Why Choose Us?</h2>
-      <ul>
-        <li>Wide variety of plants</li>
-        <li>Quality and healthy plants</li>
-        <li>Affordable prices</li>
-        <li>User-friendly shopping experience</li>
-        <li>Customer-focused service</li>
-      </ul>
-
-      <p>
-        Thank you for choosing Paradise Nursery. We are happy to be a part
-        of your journey toward a greener and healthier space.
+      <p style={{ marginTop: '15px', lineHeight: '1.6' }}>
+        Whether you're starting your first indoor garden or expanding an
+        established collection, Paradise Nursery is here to help you find the
+        perfect plant for your space and lifestyle.
       </p>
     </div>
   );

@@ -1,134 +1,90 @@
-import React from "react";
+import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addItem } from './CartSlice';
+import './App.css';
 
-const plants = [
+const plantsData = [
   {
-    id: 1,
-    name: "Snake Plant",
-    category: "Indoor Plants",
-    price: 25,
-    image: "https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?auto=format&fit=crop&w=500&q=80",
-    description: "A beautiful and low-maintenance indoor plant."
+    category: 'Air Purifying Plants',
+    plants: [
+      { name: 'Snake Plant', image: 'https://images.unsplash.com/photo-1620127252536-03bdfcb27f75?auto=format&fit=crop&w=400&q=80', cost: '$18.00' },
+      { name: 'Spider Plant', image: 'https://images.unsplash.com/photo-1572688484438-313a6e50c333?auto=format&fit=crop&w=400&q=80', cost: '$15.00' },
+      { name: 'Peace Lily', image: 'https://images.unsplash.com/photo-1616501268209-edfff098d5c4?auto=format&fit=crop&w=400&q=80', cost: '$22.00' },
+      { name: 'Areca Palm', image: 'https://images.unsplash.com/photo-1587592299680-ae2f2f7c9b0e?auto=format&fit=crop&w=400&q=80', cost: '$28.00' },
+      { name: 'Boston Fern', image: 'https://images.unsplash.com/photo-1597055181300-e3633a108f96?auto=format&fit=crop&w=400&q=80', cost: '$16.00' },
+      { name: 'Rubber Plant', image: 'https://images.unsplash.com/photo-1613737693022-4c9b6d3a3e7c?auto=format&fit=crop&w=400&q=80', cost: '$24.00' },
+    ],
   },
   {
-    id: 2,
-    name: "Peace Lily",
-    category: "Indoor Plants",
-    price: 30,
-    image: "https://images.unsplash.com/photo-1593691509543-c55fb32e5cee?auto=format&fit=crop&w=500&q=80",
-    description: "An elegant plant that adds beauty to any room."
+    category: 'Succulents',
+    plants: [
+      { name: 'Echeveria', image: 'https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=400&q=80', cost: '$10.00' },
+      { name: 'Aloe Vera', image: 'https://images.unsplash.com/photo-1509587584298-0f3b3a3a1797?auto=format&fit=crop&w=400&q=80', cost: '$12.00' },
+      { name: 'Jade Plant', image: 'https://images.unsplash.com/photo-1509937528035-ad76254b0356?auto=format&fit=crop&w=400&q=80', cost: '$14.00' },
+      { name: 'Haworthia', image: 'https://images.unsplash.com/photo-1459156212016-c812468e2115?auto=format&fit=crop&w=400&q=80', cost: '$11.00' },
+      { name: 'Sedum', image: 'https://images.unsplash.com/photo-1485955900006-10f4d324d411?auto=format&fit=crop&w=400&q=80', cost: '$9.00' },
+      { name: 'Panda Plant', image: 'https://images.unsplash.com/photo-1519336056116-bda898f92d3a?auto=format&fit=crop&w=400&q=80', cost: '$13.00' },
+    ],
   },
   {
-    id: 3,
-    name: "Aloe Vera",
-    category: "Medicinal Plants",
-    price: 20,
-    image: "https://images.unsplash.com/photo-1509423350716-97f9360b4e09?auto=format&fit=crop&w=500&q=80",
-    description: "A useful succulent known for its soothing properties."
+    category: 'Flowering Plants',
+    plants: [
+      { name: 'Orchid', image: 'https://images.unsplash.com/photo-1524598171348-0a41369cfa27?auto=format&fit=crop&w=400&q=80', cost: '$30.00' },
+      { name: 'African Violet', image: 'https://images.unsplash.com/photo-1524863479829-916d8e77f114?auto=format&fit=crop&w=400&q=80', cost: '$14.00' },
+      { name: 'Hibiscus', image: 'https://images.unsplash.com/photo-1597848212624-a19eb35e2651?auto=format&fit=crop&w=400&q=80', cost: '$20.00' },
+      { name: 'Begonia', image: 'https://images.unsplash.com/photo-1509721434272-b79147e0e708?auto=format&fit=crop&w=400&q=80', cost: '$17.00' },
+      { name: 'Geranium', image: 'https://images.unsplash.com/photo-1587334207806-7c8752e5c6cf?auto=format&fit=crop&w=400&q=80', cost: '$15.00' },
+      { name: 'Kalanchoe', image: 'https://images.unsplash.com/photo-1533616688419-b7a585564566?auto=format&fit=crop&w=400&q=80', cost: '$12.00' },
+    ],
   },
-  {
-    id: 4,
-    name: "Money Plant",
-    category: "Indoor Plants",
-    price: 18,
-    image: "https://images.unsplash.com/photo-1614594575662-45f6e5b9d4f5?auto=format&fit=crop&w=500&q=80",
-    description: "A popular indoor plant that is easy to grow."
-  },
-  {
-    id: 5,
-    name: "Spider Plant",
-    category: "Indoor Plants",
-    price: 22,
-    image: "https://images.unsplash.com/photo-1572688484438-313a6e50c333?auto=format&fit=crop&w=500&q=80",
-    description: "A fast-growing plant perfect for indoor spaces."
-  },
-  {
-    id: 6,
-    name: "Jade Plant",
-    category: "Succulents",
-    price: 28,
-    image: "https://images.unsplash.com/photo-1567225557594-88d73e55f2cb?auto=format&fit=crop&w=500&q=80",
-    description: "A beautiful succulent with thick green leaves."
-  },
-  {
-    id: 7,
-    name: "Cactus",
-    category: "Succulents",
-    price: 15,
-    image: "https://images.unsplash.com/photo-1459411621453-7b03977f4bfc?auto=format&fit=crop&w=500&q=80",
-    description: "A hardy plant that requires very little maintenance."
-  },
-  {
-    id: 8,
-    name: "Areca Palm",
-    category: "Outdoor Plants",
-    price: 35,
-    image: "https://images.unsplash.com/photo-1525490829609-d166ddb58678?auto=format&fit=crop&w=500&q=80",
-    description: "A tropical palm that brings a fresh natural look."
-  }
 ];
 
-function ProductList({ onAddToCart }) {
-  const addToCart = (plant) => {
-    if (onAddToCart) {
-      onAddToCart(plant);
-    } else {
-      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+function ProductList({ onCartClick, onHomeClick }) {
+  const dispatch = useDispatch();
+  const cartItems = useSelector(state => state.cart.items);
+  const [addedItems, setAddedItems] = useState({});
 
-      const existingItem = cart.find((item) => item.id === plant.id);
+  const totalQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
 
-      if (existingItem) {
-        existingItem.quantity += 1;
-      } else {
-        cart.push({
-          ...plant,
-          quantity: 1
-        });
-      }
-
-      localStorage.setItem("cart", JSON.stringify(cart));
-
-      alert(`${plant.name} added to cart!`);
-    }
+  const handleAddToCart = (plant) => {
+    dispatch(addItem(plant));
+    setAddedItems(prev => ({ ...prev, [plant.name]: true }));
   };
 
   return (
-    <div className="product-page">
-      <div className="product-header">
-        <h1>Paradise Nursery</h1>
-        <h2>Our Plants</h2>
-        <p>Choose from our collection of beautiful and healthy plants.</p>
-      </div>
+    <div>
+      <nav className="navbar">
+        <span onClick={onHomeClick} style={{ fontWeight: 'bold', fontSize: '1.2rem' }}>
+          🌿 Paradise Nursery
+        </span>
+        <div className="nav-links">
+          <span onClick={onHomeClick}>Home</span>
+          <span>Plants</span>
+          <span className="cart-icon" onClick={onCartClick}>
+            🛒 Cart <span className="cart-count">{totalQuantity}</span>
+          </span>
+        </div>
+      </nav>
 
-      <div className="product-grid">
-        {plants.map((plant) => (
-          <div className="product-card" key={plant.id}>
-            <img
-              src={plant.image}
-              alt={plant.name}
-              className="product-image"
-            />
-
-            <div className="product-details">
-              <h3>{plant.name}</h3>
-
-              <p className="product-category">
-                {plant.category}
-              </p>
-
-              <p className="product-description">
-                {plant.description}
-              </p>
-
-              <p className="product-price">
-                ${plant.price}
-              </p>
-
-              <button
-                className="add-to-cart"
-                onClick={() => addToCart(plant)}
-              >
-                Add to Cart
-              </button>
+      <div className="product-list-container">
+        {plantsData.map(section => (
+          <div key={section.category}>
+            <h2 className="category-title">{section.category}</h2>
+            <div className="plant-grid">
+              {section.plants.map(plant => (
+                <div className="plant-card" key={plant.name}>
+                  <img src={plant.image} alt={plant.name} />
+                  <h3>{plant.name}</h3>
+                  <p>{plant.cost}</p>
+                  <button
+                    className="add-to-cart-button"
+                    disabled={!!addedItems[plant.name]}
+                    onClick={() => handleAddToCart(plant)}
+                  >
+                    {addedItems[plant.name] ? 'Added' : 'Add to Cart'}
+                  </button>
+                </div>
+              ))}
             </div>
           </div>
         ))}

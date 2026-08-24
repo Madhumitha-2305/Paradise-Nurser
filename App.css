@@ -1,57 +1,215 @@
-/* App.css */
-
 * {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
-  box-sizing: border-box;
-}
-
-body {
-  font-family: Arial, sans-serif;
-  margin: 0;
+  font-family: 'Segoe UI', Arial, sans-serif;
 }
 
 .landing-page {
   min-height: 100vh;
-  background-image: url("./assets/nursery-background.jpg");
+  width: 100%;
+  background-image: linear-gradient(rgba(0, 40, 20, 0.55), rgba(0, 40, 20, 0.55)),
+    url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?auto=format&fit=crop&w=1600&q=80');
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
+  justify-content: center;
+  color: #ffffff;
   text-align: center;
-}
-
-.landing-content {
-  background: rgba(0, 0, 0, 0.55);
-  color: white;
-  padding: 40px;
-  border-radius: 12px;
-  max-width: 600px;
+  padding: 20px;
 }
 
 .landing-content h1 {
-  font-size: 42px;
-  margin-bottom: 15px;
+  font-size: 3rem;
+  margin-bottom: 10px;
+  letter-spacing: 1px;
 }
 
 .landing-content p {
-  font-size: 18px;
-  line-height: 1.6;
-  margin-bottom: 25px;
+  font-size: 1.2rem;
+  max-width: 600px;
+  margin: 0 auto 30px auto;
 }
 
-.landing-content button {
+.get-started-button {
   background-color: #4caf50;
   color: white;
   border: none;
-  padding: 12px 25px;
+  padding: 14px 32px;
+  font-size: 1.1rem;
   border-radius: 6px;
-  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.2s ease-in-out;
+}
+
+.get-started-button:hover {
+  background-color: #3e8e41;
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #2f4f2f;
+  padding: 15px 30px;
+  color: white;
+}
+
+.navbar .nav-links {
+  display: flex;
+  gap: 25px;
+}
+
+.navbar a, .navbar span {
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.cart-icon {
+  position: relative;
   cursor: pointer;
 }
 
-.landing-content button:hover {
-  background-color: #388e3c;
+.cart-count {
+  background-color: #e53935;
+  border-radius: 50%;
+  padding: 2px 8px;
+  font-size: 0.85rem;
+  margin-left: 6px;
+}
+
+/* Product listing */
+.product-list-container {
+  padding: 30px;
+}
+
+.category-title {
+  font-size: 1.6rem;
+  margin: 30px 0 15px 0;
+  color: #2f4f2f;
+}
+
+.plant-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 20px;
+}
+
+.plant-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  text-align: center;
+  padding-bottom: 15px;
+  background: #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+}
+
+.plant-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+}
+
+.plant-card h3 {
+  margin: 10px 0 5px 0;
+}
+
+.plant-card p {
+  margin-bottom: 10px;
+  color: #444;
+}
+
+.add-to-cart-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 8px 18px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.add-to-cart-button:disabled {
+  background-color: #a5d6a7;
+  cursor: not-allowed;
+}
+
+/* Cart page */
+.cart-container {
+  padding: 30px;
+}
+
+.cart-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  border-bottom: 1px solid #eee;
+  padding: 15px 0;
+}
+
+.cart-item img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border-radius: 6px;
+}
+
+.cart-item-details {
+  flex: 1;
+}
+
+.quantity-controls {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.quantity-controls button {
+  padding: 4px 10px;
+  cursor: pointer;
+}
+
+.delete-button {
+  background-color: #e53935;
+  color: white;
+  border: none;
+  padding: 8px 14px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.cart-summary {
+  margin-top: 20px;
+  font-size: 1.2rem;
+  font-weight: bold;
+}
+
+.cart-actions {
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
+
+.checkout-button, .continue-shopping-button {
+  padding: 12px 24px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.checkout-button {
+  background-color: #2f4f2f;
+  color: white;
+}
+
+.continue-shopping-button {
+  background-color: #4caf50;
+  color: white;
 }
